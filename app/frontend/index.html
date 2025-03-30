@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>С Днем Рождения, Астемир!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <div class="logo">Астемир<span>16</span></div>
+                <ul class="nav-links">
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#wishes">Поздравления</a></li>
+                    <li><a href="#articles">Статьи</a></li>
+                    <li><a href="#gallery">Галерея</a></li>
+                </ul>
+                <div class="burger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </nav>
+        </header>
+
+        <section id="home" class="hero">
+            <div class="confetti"></div>
+            <div class="hero-content">
+                <h1>С <span>16-летием</span>, Астемир!</h1>
+                <p>Поздравляем с этим особенным днем! Пусть все твои мечты сбываются!</p>
+                <div class="countdown" id="countdown">
+                    <div>
+                        <span id="days">00</span>
+                        <p>Дней</p>
+                    </div>
+                    <div>
+                        <span id="hours">00</span>
+                        <p>Часов</p>
+                    </div>
+                    <div>
+                        <span id="minutes">00</span>
+                        <p>Минут</p>
+                    </div>
+                    <div>
+                        <span id="seconds">00</span>
+                        <p>Секунд</p>
+                    </div>
+                </div>
+                <button class="btn" id="celebrateBtn">Отпраздновать!</button>
+            </div>
+        </section>
+
+        <section id="wishes" class="wishes">
+            <h2>Поздравления и пожелания</h2>
+            <div class="wishes-container">
+                <div class="wish-card">
+                    <div class="wish-header">
+                        <img src="https://via.placeholder.com/50" alt="Аватар">
+                        <h3>От Родителей</h3>
+                    </div>
+                    <p>Дорогой Астемир, мы так гордимся тобой! В твои 16 лет ты уже столько достиг. Желаем тебе и дальше идти к своим целям и мечтам! Мы всегда поддержим тебя.</p>
+                </div>
+                <div class="wish-card">
+                    <div class="wish-header">
+                        <img src="https://via.placeholder.com/50" alt="Аватар">
+                        <h3>От Друзей</h3>
+                    </div>
+                    <p>Астемир, ты лучший друг, на которого всегда можно положиться! Желаем тебе множества новых интересных открытий и достижений! С днем рождения!</p>
+                </div>
+                <div class="wish-card">
+                    <div class="wish-header">
+                        <img src="https://via.placeholder.com/50" alt="Аватар">
+                        <h3>От Учителей</h3>
+                    </div>
+                    <p>Поздравляем с 16-летием! Твои настойчивость и стремление к знаниям всегда вдохновляют. Продолжай в том же духе!</p>
+                </div>
+            </div>
+            <div class="add-wish">
+                <h3>Добавить поздравление</h3>
+                <form id="wishForm">
+                    <input type="text" placeholder="Ваше имя" required>
+                    <textarea placeholder="Ваше поздравление..." required></textarea>
+                    <button type="submit" class="btn">Отправить</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="articles" class="articles">
+            <h2>Статьи и Воспоминания</h2>
+            <div class="articles-container">
+                <div class="article-card">
+                    <div class="article-img">
+                        <img src="https://via.placeholder.com/300x200" alt="Статья 1">
+                    </div>
+                    <div class="article-content">
+                        <h3>Наши лучшие приключения</h3>
+                        <p class="article-meta">Опубликовано: 10 марта 2024</p>
+                        <p>Воспоминания о наших самых ярких и запоминающихся моментах...</p>
+                        <a href="#" class="read-more">Читать далее</a>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <div class="article-img">
+                        <img src="https://via.placeholder.com/300x200" alt="Статья 2">
+                    </div>
+                    <div class="article-content">
+                        <h3>16 интересных фактов об Астемире</h3>
+                        <p class="article-meta">Опубликовано: 5 марта 2024</p>
+                        <p>Все самое интересное, чего вы могли не знать о нашем имениннике...</p>
+                        <a href="#" class="read-more">Читать далее</a>
+                    </div>
+                </div>
+            </div>
+            <button class="btn" id="newArticleBtn">Написать статью</button>
+        </section>
+
+        <section id="gallery" class="gallery">
+            <h2>Фотогалерея</h2>
+            <div class="gallery-container">
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/300x300" alt="Фото 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/300x300" alt="Фото 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/300x300" alt="Фото 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/300x300" alt="Фото 4">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/300x300" alt="Фото 5">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/300x300" alt="Фото 6">
+                </div>
+            </div>
+        </section>
+
+        <div id="articleModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Написать новую статью</h2>
+                <form id="articleForm">
+                    <input type="text" placeholder="Заголовок статьи" required>
+                    <textarea placeholder="Содержание статьи..." required></textarea>
+                    <div class="file-upload">
+                        <label for="articleImage">Добавить изображение</label>
+                        <input type="file" id="articleImage" accept="image/*">
+                    </div>
+                    <button type="submit" class="btn">Опубликовать</button>
+                </form>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>О сайте</h3>
+                    <p>Этот сайт создан специально для празднования 16-летия Астемира. Здесь вы можете оставить поздравления и написать памятные статьи.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <p><i class="fas fa-envelope"></i> astemir@example.com</p>
+                    <p><i class="fas fa-phone"></i> +7 (XXX) XXX-XX-XX</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Подписаться</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 С Днем Рождения, Астемир! Все права защищены.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,617 @@
+/* Базовые стили и сброс */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Переменные */
+:root {
+    --primary-color: #6c5ce7;
+    --secondary-color: #fd79a8;
+    --accent-color: #00cec9;
+    --dark-color: #2d3436;
+    --light-color: #f9f9f9;
+}
+
+/* Заголовки */
+h1, h2, h3 {
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-align: center;
+    position: relative;
+}
+
+h2:after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: var(--primary-color);
+    margin: 15px auto;
+}
+
+/* Кнопки */
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    box-shadow: 0 4px 6px rgba(108, 92, 231, 0.3);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 14px rgba(108, 92, 231, 0.4);
+    background: #5d4ed6;
+}
+
+.btn:active {
+    transform: translateY(-1px);
+}
+
+/* Навигация */
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--dark-color);
+}
+
+.logo span {
+    color: var(--primary-color);
+    font-family: 'Pacifico', cursive;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--dark-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.burger {
+    display: none;
+    cursor: pointer;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: var(--dark-color);
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Герой секция */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: linear-gradient(135deg, #a6c0fe 0%, #f68084 100%);
+    color: white;
+    overflow: hidden;
+    padding-top: 80px;
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 800px;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hero h1 span {
+    color: var(--light-color);
+    position: relative;
+    display: inline-block;
+}
+
+.hero h1 span:after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: rgba(253, 121, 168, 0.6);
+    z-index: -1;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Конфетти */
+.confetti {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* Обратный отсчет */
+.countdown {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+}
+
+.countdown div {
+    margin: 0 15px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 15px 20px;
+    backdrop-filter: blur(5px);
+    min-width: 80px;
+}
+
+.countdown span {
+    font-size: 2rem;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Секция поздравлений */
+.wishes {
+    padding: 80px 0;
+    background-color: white;
+}
+
+.wishes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.wish-card {
+    background: white;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.wish-card:hover {
+    transform: translateY(-10px);
+}
+
+.wish-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.wish-header img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+    object-fit: cover;
+}
+
+.wish-card h3 {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+.add-wish {
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.add-wish h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.add-wish form {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-wish input, 
+.add-wish textarea {
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.add-wish textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+/* Секция статей */
+.articles {
+    padding: 80px 0;
+    background-color: #f9f9f9;
+}
+
+.articles-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.article-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.article-card:hover {
+    transform: translateY(-10px);
+}
+
+.article-img img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.article-content {
+    padding: 20px;
+}
+
+.article-content h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: var(--dark-color);
+}
+
+.article-meta {
+    font-size: 0.9rem;
+    color: #aaa;
+    margin-bottom: 10px;
+}
+
+.read-more {
+    display: inline-block;
+    margin-top: 15px;
+    color: var(--primary-color);
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.read-more:hover {
+    text-decoration: underline;
+}
+
+#newArticleBtn {
+    margin: 0 auto;
+    display: block;
+}
+
+/* Галерея */
+.gallery {
+    padding: 80px 0;
+    background-color: white;
+}
+
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.03);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Модальное окно для статьи */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 700px;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: 25px;
+    top: 15px;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: black;
+}
+
+.modal h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#articleForm {
+    display: flex;
+    flex-direction: column;
+}
+
+#articleForm input, 
+#articleForm textarea {
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+#articleForm textarea {
+    min-height: 250px;
+    resize: vertical;
+}
+
+.file-upload {
+    margin-bottom: 15px;
+}
+
+.file-upload label {
+    display: inline-block;
+    padding: 10px 15px;
+    background: #f0f0f0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.file-upload label:hover {
+    background: #e0e0e0;
+}
+
+.file-upload input {
+    display: none;
+}
+
+/* Футер */
+footer {
+    background: var(--dark-color);
+    color: white;
+    padding: 60px 0 20px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.footer-section h3 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.footer-section h3:after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: var(--primary-color);
+    margin-top: 10px;
+}
+
+.footer-section p {
+    margin-bottom: 10px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.social-icons a {
+    color: white;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--primary-color);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+}
+
+/* Адаптивность */
+@media screen and (max-width: 768px) {
+    .nav-links {
+        position: absolute;
+        right: 0;
+        height: 92vh;
+        top: 8vh;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+        box-shadow: -5px 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links li {
+        opacity: 0;
+        margin: 20px 0;
+    }
+
+    .burger {
+        display: block;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .countdown div {
+        margin: 0 10px;
+        padding: 10px 15px;
+        min-width: 60px;
+    }
+
+    .countdown span {
+        font-size: 1.5rem;
+    }
+
+    .gallery-container,
+    .articles-container,
+    .wishes-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.nav-active {
+    transform: translateX(0%);
+}
+
+@keyframes navLinkFade {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+.toggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.toggle .line2 {
+    opacity: 0;
+}
+
+.toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
