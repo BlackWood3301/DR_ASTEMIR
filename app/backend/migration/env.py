@@ -12,6 +12,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(
 
 # Импортируем модели и переменные из config
 from app.backend.database.post.models import *
+from app.backend.database.pozdravlenia.models import *
 from app.backend.database.database import Base
 from app.backend.database.config import DATABASE_URL
 # this is the Alembic Config object, which provides

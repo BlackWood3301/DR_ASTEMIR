@@ -25,7 +25,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Здесь можно установить реальную дату
     const birthdayDate = new Date('2024-04-01T00:00:00').getTime();
 
-    // Обновление обратного отсчета
+    // Закомментируйте или удалите этот блок, если не нужен обратный отсчет
+    /*
     function updateCountdown() {
         const now = new Date().getTime();
         const distance = birthdayDate - now;
@@ -48,6 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     updateCountdown();
     const countdownInterval = setInterval(updateCountdown, 1000);
+    */
 
     // Анимация конфетти при нажатии на кнопку празднования
     const celebrateBtn = document.getElementById('celebrateBtn');
@@ -115,14 +117,80 @@ document.addEventListener('DOMContentLoaded', function() {
         modal.style.display = 'none';
     });
     
+    // Загрузка поздравлений с API при загрузке страницы
+    loadPozdravlenia();
+    
     // Обработка формы для поздравлений
     const wishForm = document.getElementById('wishForm');
     
-    wishForm.addEventListener('submit', (e) => {
+    wishForm.addEventListener('submit', async function(e) {
         e.preventDefault();
-        // Здесь будет логика отправки поздравления на сервер
-        alert('Поздравление успешно отправлено!');
-        wishForm.reset();
+        
+        const nameInput = this.querySelector('input[type="text"]');
+        const descriptionInput = this.querySelector('textarea');
+        
+        const name = nameInput.value.trim();
+        const description = descriptionInput.value.trim();
+        
+        if (name && description) {
+            // Отправляем на сервер
+            const success = await addPozdravlenie(name, description);
+            
+            if (success) {
+                // Очищаем форму
+                this.reset();
+                
+                // Перезагружаем список поздравлений
+                loadPozdravlenia();
+                
+                alert('Поздравление успешно отправлено!');
+            } else {
+                alert('Не удалось отправить поздравление. Пожалуйста, попробуйте еще раз.');
+            }
+        } else {
+            alert('Пожалуйста, заполните все поля формы.');
+        }
     });
+    
+    // Функция для загрузки поздравлений с сервера
+    async function loadPozdravlenia() {
+        const wishesContainer = document.querySelector('.wishes-container');
+        
+        // Получаем данные с API
+        const pozdravlenia = await getAllPozdravlenia();
+        
+        // Если нет данных
+        if (!pozdravlenia || pozdravlenia.length === 0) {
+            wishesContainer.innerHTML = '<p class="no-wishes">Пока нет поздравлений. Будьте первым!</p>';
+            return;
+        }
+        
+        // Очищаем контейнер
+        wishesContainer.innerHTML = '';
+        
+        // Добавляем каждое поздравление в контейнер
+        pozdravlenia.forEach(item => {
+            // Получаем данные из вложенного объекта Pozdravlenia
+            const pozdravlenie = item.Pozdravlenia;
+            
+            // Проверка на случай если структура данных изменится
+            if (!pozdravlenie) {
+                console.error('Неожиданная структура данных:', item);
+                return;
+            }
+            
+            const wishCard = document.createElement('div');
+            wishCard.classList.add('wish-card');
+            
+            wishCard.innerHTML = `
+                <div class="wish-header">
+                    <h3>${pozdravlenie.name || 'Анонимно'}</h3>
+                </div>
+                <p>${pozdravlenie.description || 'Поздравление без текста'}</p>
+            `;
+            
+            wishesContainer.appendChild(wishCard);
+        });
+    }
 });
 
