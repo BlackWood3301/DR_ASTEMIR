@@ -128,6 +128,9 @@
             padding: 15px 20px;
             margin-bottom: 15px;
             position: relative;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            max-width: 100%;
         }
         
         .comment-header {
@@ -139,6 +142,9 @@
         .comment-author {
             font-weight: 600;
             color: #6c5ce7;
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         
         .comment-date {
@@ -148,6 +154,10 @@
         
         .comment-text {
             line-height: 1.6;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            max-width: 100%;
         }
         
         .comment-form {
@@ -170,11 +180,15 @@
             border: 1px solid #e1e1e1;
             border-radius: 5px;
             font-size: 1rem;
+            max-width: 100%;
+            box-sizing: border-box;
         }
         
         .comment-form textarea {
             min-height: 100px;
             resize: vertical;
+            max-width: 100%;
+            max-height: 300px;
         }
         
         .comment-form button {
@@ -291,112 +305,6 @@
         </footer>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Обработка мобильной навигации
-            const burger = document.querySelector('.burger');
-            const nav = document.querySelector('.nav-links');
-            const navLinks = document.querySelectorAll('.nav-links li');
-
-            burger.addEventListener('click', () => {
-                nav.classList.toggle('nav-active');
-                
-                navLinks.forEach((link, index) => {
-                    if (link.style.animation) {
-                        link.style.animation = '';
-                    } else {
-                        link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
-                    }
-                });
-                
-                burger.classList.toggle('toggle');
-            });
-
-            // Обработка формы комментариев
-            const commentForm = document.getElementById('commentForm');
-            const commentsContainer = document.getElementById('commentsContainer');
-            
-            // Загрузка комментариев из локального хранилища
-            loadComments();
-            
-            // Обработчик отправки формы
-            commentForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const nameInput = document.getElementById('commentName');
-                const textInput = document.getElementById('commentText');
-                
-                const name = nameInput.value.trim();
-                const text = textInput.value.trim();
-                
-                if (name && text) {
-                    // Создаем новый комментарий
-                    addComment(name, text);
-                    
-                    // Очищаем форму
-                    nameInput.value = '';
-                    textInput.value = '';
-                }
-            });
-            
-            // Функция для добавления комментария
-            function addComment(name, text) {
-                // Создаем объект комментария
-                const comment = {
-                    name: name,
-                    text: text,
-                    date: new Date().toLocaleString()
-                };
-                
-                // Сохраняем в локальное хранилище
-                saveComment(comment);
-                
-                // Отображаем комментарий
-                displayComment(comment);
-            }
-            
-            // Функция для отображения комментария
-            function displayComment(comment) {
-                const commentElement = document.createElement('div');
-                commentElement.classList.add('comment');
-                
-                commentElement.innerHTML = `
-                    <div class="comment-header">
-                        <div class="comment-author">${comment.name}</div>
-                        <div class="comment-date">${comment.date}</div>
-                    </div>
-                    <div class="comment-text">${comment.text}</div>
-                `;
-                
-                commentsContainer.prepend(commentElement);
-            }
-            
-            // Функция для сохранения комментария в локальное хранилище
-            function saveComment(comment) {
-                let comments = JSON.parse(localStorage.getItem('greetingComments') || '[]');
-                comments.push(comment);
-                localStorage.setItem('greetingComments', JSON.stringify(comments));
-            }
-            
-            // Функция для загрузки комментариев из локального хранилища
-            function loadComments() {
-                const comments = JSON.parse(localStorage.getItem('greetingComments') || '[]');
-                
-                // Очищаем контейнер
-                commentsContainer.innerHTML = '';
-                
-                // Если комментариев нет
-                if (comments.length === 0) {
-                    commentsContainer.innerHTML = '<p class="no-comments">Пока нет комментариев. Будьте первым!</p>';
-                    return;
-                }
-                
-                // Отображаем комментарии в обратном порядке (новые сверху)
-                comments.reverse().forEach(comment => {
-                    displayComment(comment);
-                });
-            }
-        });
-    </script>
+    <script src="comments-api.js"></script>
 </body>
 </html>

@@ -5,6 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pathlib import Path
 import os
 from backend.database.pozdravlenia.router import router as pozdrav_rout
+from backend.database.comment.router import router as comment_rout
 
 app = FastAPI()
 
@@ -23,6 +24,7 @@ FRONTEND_DIR = BASE_DIR / "frontend"
 
 # Подключаем API маршруты
 app.include_router(pozdrav_rout)
+app.include_router(comment_rout)
 
 # Маршрут для корневой страницы
 @app.get("/", response_class=HTMLResponse)
